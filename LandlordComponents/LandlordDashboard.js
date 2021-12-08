@@ -1,22 +1,19 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
 import React from 'react'
-import { View, Text, ScrollView, StyleSheet, FlatList, Dimensions ,Button} from 'react-native'
+import { View, Text, ScrollView, StyleSheet, FlatList, Dimensions, Button } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { color } from 'react-native-elements/dist/helpers';
-import RoomDetailsCard from './RoomDetailsCard';
+import RoomDetailsCard from '../Components/RoomDetailsCard';
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import RoomUploadForm from '../LandlordComponents/RoomUploadForm';
 
-const About = ({navigation}) => {
+const LandlordDashboard = () => {
     const [catergoryIndex, setCategoryIndex] = React.useState(0);
-    const categories = ['Flat', 'Hostels', 'Rooms', 'Shop'];
-
+    const categories = [' Upload Rooms','Active Rooms', 'Inactive Rooms', 'Room Requests', 'Pending Rooms','Expired Rooms'];
     const CategoryList = () => {
         return (
+            <ScrollView horizontal={true} style={style.ScrollContainer} >
             <View style={style.categoryContainer}>
                 {categories.map((item, index) => (
                     <TouchableOpacity
@@ -34,6 +31,8 @@ const About = ({navigation}) => {
                 ))}
 
             </View>
+            </ScrollView>
+
         )
     }
     return (
@@ -47,39 +46,22 @@ const About = ({navigation}) => {
 
                 <View>
                     <Text style={{ fontSize: 25, fontWeight: 'bold', color: 'black' }} >Welcome </Text>
-                    <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#1abc9c' }}>RoomsNearYou</Text>
+                    <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#1abc9c' }}>Shriaknt </Text>
                 </View>
                 <TouchableOpacity
                 onPress={() => navigation.navigate('RoomUploadForm')}>
-                <View
-                    style={{
-                        backgroundColor: '#d35400',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        borderRadius: 15,
-                        padding: 15,
-                        marginBottom:30,
-                        marginTop:15,
-                        marginHorizontal:45
-                    }}>
-                    <Text style={{ color: 'white', fontSize: 15, fontWeight: '800' }}>
+                <View >
+                   
+                    <Text style={{ color: 'black', fontSize: 20, fontWeight: '800' }}>
                         Upload Room
+                    </Text>
+                    <Text style={{ color: 'red', fontSize: 17, fontWeight: '800' ,marginTop:10}}>
+                      Free Plan
                     </Text>
                 </View>
             </TouchableOpacity>
             </View>
-            <View style={{ marginTop: 30, flexDirection: 'row' }}>
-                <View style={style.searchContainer}>
-                    <Ionicons
-                        testID="nextButton"
-                        name="search"
-                        color="black"
-                        size={20}
-                        style={{ backgroundColor: 'transparent', marginLeft:25}}
-                    />
-                    <TextInput placeholder="Search" placeholderTextColor="#2c3e50" style={{ color: '#2c3e50', fontWeight: 'bold', textAlign: 'center', marginLeft: 20 }} />
-                </View>
-            </View>
+            
             <CategoryList />
             <RoomDetailsCard />
             <RoomDetailsCard />
@@ -92,15 +74,12 @@ const style = StyleSheet.create({
         marginTop: 20,
         flexDirection: 'row',
         justifyContent: 'space-between',
+        flex:1
     },
-    searchContainer: {
-        height: 50,
-        backgroundColor: '#ecf0f1',
-        borderRadius: 10,
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
+    ScrollContainer:{
+          flex:1,
     },
+    
     categoryContainer: {
         flexDirection: 'row',
         marginTop: 20,
@@ -108,13 +87,15 @@ const style = StyleSheet.create({
         justifyContent: 'space-between',
 
     },
-    categoryText: { fontSize: 16, color: 'grey', fontWeight: 'bold' },
+    categoryText: { fontSize: 15,paddingLeft:8, color: 'grey', fontWeight: 'bold' , justifyContent:'space-between'},
     categoryTextSelected: {
         color: '#2c3e50',
         paddingBottom: 5,
         borderBottomWidth: 2,
         borderColor: '#2c3e50',
+        
     },
 })
 
-export default About
+
+export default LandlordDashboard
