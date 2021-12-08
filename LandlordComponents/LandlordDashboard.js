@@ -46,20 +46,19 @@ const LandlordDashboard = () => {
 
                 <View>
                     <Text style={{ fontSize: 25, fontWeight: 'bold', color: 'black' }} >Welcome </Text>
-                    <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#1abc9c' }}>Shriaknt </Text>
+                    <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#1abc9c' }}>Shrikant </Text>
                 </View>
-                <TouchableOpacity
-                onPress={() => navigation.navigate('RoomUploadForm')}>
+               
                 <View >
                    
-                    <Text style={{ color: 'black', fontSize: 20, fontWeight: '800' }}>
-                        Upload Room
+                    <Text style={{ color: 'black', fontSize: 20, fontWeight: '800',marginTop:3 }}>
+                        Upgrade Plan
                     </Text>
                     <Text style={{ color: 'red', fontSize: 17, fontWeight: '800' ,marginTop:10}}>
                       Free Plan
                     </Text>
                 </View>
-            </TouchableOpacity>
+            
             </View>
             
             <CategoryList />
